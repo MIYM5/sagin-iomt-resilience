@@ -1,0 +1,2 @@
+policy,scenario,seed,run,t0,hubTxDbm,txEnergyJ,idleEnergyJ,energyJ,mask,planes,satsPerPlane,jamDbm,dosRate,txTimeS,awakeS,windowS
+P1,S1,1,9,5126.74,23,43.743,640.756,684.499,25,12,10,20,15Mbps,80.4886,7200,7200

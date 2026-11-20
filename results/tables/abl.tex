@@ -1,0 +1,22 @@
+P3 and P4 differ from P1 and P2 in more than one parameter, so the effect of priority was isolated by adding two variants at the same 10\,dBm and with the radio always awake: P3F, which uses FIFO scheduling, and P3H, which applies priority at the hub but not at the UAV relay. Table~\ref{tab:abl} compares them with P3 (priority at both) and P4 (FIFO with sleep).
+
+\begin{table}[t]
+\caption{Priority ablation at 10\,dBm (system-level, 2-h window, mean $\pm$ 95\% confidence interval over 10 seeds): alarm (C1) and ECG (C2) deadline misses in \%}\label{tab:abl}
+\centering\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lrrrrrrrr@{}}
+\toprule
+ & \multicolumn{2}{c}{P3F: FIFO, awake} & \multicolumn{2}{c}{P3H: hub priority} & \multicolumn{2}{c}{P3: hub + relay} & \multicolumn{2}{c}{P4: FIFO + sleep} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}\cmidrule(l){8-9}
+Scenario & C1 & C2 & C1 & C2 & C1 & C2 & C1 & C2 \\
+\midrule
+S0 normal & 0.60\,$\pm$\,0.33 & 0.48\,$\pm$\,0.02 & 0.47\,$\pm$\,0.36 & 0.37\,$\pm$\,0.02 & 0.04\,$\pm$\,0.09 & 0.07\,$\pm$\,0.01 & 0.60\,$\pm$\,0.33 & 0.48\,$\pm$\,0.02 \\
+S1, 240 sats & 20.40\,$\pm$\,1.31 & 20.51\,$\pm$\,0.24 & 19.97\,$\pm$\,1.39 & 20.44\,$\pm$\,0.23 & 19.49\,$\pm$\,1.19 & 20.02\,$\pm$\,0.21 & 20.32\,$\pm$\,1.30 & 20.49\,$\pm$\,0.22 \\
+S1, 120 sats & 58.85\,$\pm$\,2.97 & 59.44\,$\pm$\,0.88 & 58.00\,$\pm$\,3.04 & 59.40\,$\pm$\,0.88 & 57.70\,$\pm$\,2.95 & 58.96\,$\pm$\,0.88 & 58.76\,$\pm$\,3.00 & 59.44\,$\pm$\,0.88 \\
+S2 jamming & 9.03\,$\pm$\,1.27 & 8.89\,$\pm$\,0.02 & 8.76\,$\pm$\,1.18 & 8.79\,$\pm$\,0.02 & 8.33\,$\pm$\,1.17 & 8.47\,$\pm$\,0.01 & 9.03\,$\pm$\,1.27 & 8.89\,$\pm$\,0.02 \\
+S3 DoS flood & 1.35\,$\pm$\,0.62 & 1.14\,$\pm$\,0.35 & 1.09\,$\pm$\,0.64 & 1.05\,$\pm$\,0.34 & 0.80\,$\pm$\,0.39 & 0.73\,$\pm$\,0.35 & 1.35\,$\pm$\,0.62 & 1.14\,$\pm$\,0.35 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Three observations follow. First, priority matters mainly under normal operation. With continuous coverage, moving from FIFO to hub priority lowers ECG misses from 0.48\% to 0.37\%, and adding relay priority lowers them further to 0.07\%; alarm misses fall from 0.60\% to 0.04\%. Hence, most of the gain comes from the relay, which is where alarms and ECG messages queue behind record fragments. Second, when gaps or jamming dominate, priority changes the miss rates by at most about 1 percentage point, because no scheduling order can deliver traffic over a link that is absent. Third, sleep costs nothing in timeliness: P4 and P3F have identical miss rates in every scenario, so P4's energy saving in Table~\ref{tab:main} comes free. Moreover, P3F at 10\,dBm and P1 at 23\,dBm give identical results without an attack, which confirms that transmit power alone does not improve timeliness when the hub link is healthy.

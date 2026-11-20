@@ -1,0 +1,45 @@
+The reference attacks of S2 and S3 are single points, so Table~\ref{tab:sens} repeats them with stronger and weaker settings (system-level model, matched 30-min windows with the attack at minutes 10--20, 5 seeds) and varies the elevation mask that shapes the coverage gaps.
+
+\begin{table}[t]
+\caption{Sensitivity of the attack and coverage results (system-level model, 5 seeds). Attack rows give the ECG on-time share during the 10-min attack (mean $\pm$ 95\% confidence interval); mask rows give coverage, mean gap and alarm misses of P4, simulated and predicted by Eq.~\eqref{eq:pmiss}}\label{tab:sens}
+\centering\scriptsize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lllrr@{}}
+\toprule
+\multicolumn{5}{@{}l}{\textit{(a) Jammer power and distance from the UAV ground point}} \\
+Jammer & & & P1 (23\,dBm) & P3 (10\,dBm) \\
+\midrule
+10\,dBm, 300\,m & & & 98.9\,$\pm$\,0.1\% & 99.6\,$\pm$\,0.3\% \\
+20\,dBm, 600\,m & & & 98.3\,$\pm$\,0.0\% & 0.0\% \\
+20\,dBm, 300\,m (reference) & & & 95.5\,$\pm$\,1.7\% & 0.0\% \\
+20\,dBm, 150\,m & & & 85.5\,$\pm$\,9.1\% & 0.0\% \\
+30\,dBm, 300\,m & & & 0.0\% & 0.0\% \\
+%%NRJAMROWS%%
+\midrule
+\multicolumn{5}{@{}l}{\textit{(b) Flood rate and gateway queue size (10\,Mbit/s backhaul)}} \\
+Flood, queue & & ECG p95 delay & P1 & P3 \\
+\midrule
+11\,Mbit/s, 100 packets & & 100\,ms & 92.4\,$\pm$\,4.3\% & 92.8\,$\pm$\,4.3\% \\
+15\,Mbit/s, 100 packets (reference) & & 100\,ms & 92.3\,$\pm$\,4.4\% & 92.7\,$\pm$\,4.4\% \\
+20\,Mbit/s, 100 packets & & 100\,ms & 92.3\,$\pm$\,4.5\% & 92.7\,$\pm$\,4.5\% \\
+15\,Mbit/s, 50 packets & & 59\,ms & 99.1\,$\pm$\,0.3\% & 99.6\,$\pm$\,0.2\% \\
+15\,Mbit/s, 200 packets & & 180\,ms & 0.0\% & 0.0\% \\
+\midrule
+\multicolumn{5}{@{}l}{\textit{(c) Elevation mask at the UAV and the gateway (P4, 2-h window)}} \\
+Shell, mask & Coverage & Mean gap & Misses (sim.) & Misses (model) \\
+\midrule
+240 sats, 15$^\circ$ & 100\% & 0\,s & 0.4\% & 0.0\% \\
+240 sats, 25$^\circ$ & 80\% & 73\,s & 20.0\% & 19.7\% \\
+240 sats, 35$^\circ$ & 44\% & 184\,s & 55.9\% & 56.2\% \\
+120 sats, 15$^\circ$ & 70\% & 177\,s & 30.4\% & 29.5\% \\
+120 sats, 25$^\circ$ & 42\% & 332\,s & 56.9\% & 58.0\% \\
+120 sats, 35$^\circ$ & 21\% & 535\,s & 76.8\% & 78.6\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Jamming.} The ranking of the policies is stable, but whether any of them survives depends on the jammer. A 10\,dBm jammer at 300\,m leaves both policies above 98\% on time. At 20\,dBm, the 10\,dBm hub loses the link at every tested distance from 150 to 600\,m, whereas P1 keeps 85--98\% on time, and its margin shrinks as the jammer comes closer. At 30\,dBm, both policies are silenced. Hence, P1's advantage is a fixed power margin of 13\,dB rather than true immunity, and a stronger or closer jammer removes it. %%NRJAMTEXT%%
+
+\subsubsection{DoS flood.} The flood rate hardly matters once it exceeds the 10\,Mbit/s link: at 11, 15 and 20\,Mbit/s the queue stays full and about 92\% of ECG messages remain on time. The queue size, on the other hand, decides the outcome. A full drop-tail queue of $B$ packets of size $L$ adds a delay of about $BL/C$ on a link of rate $C$, i.e., 40, 80 and 160\,ms for 50, 100 and 200 packets of 1\,kB. With 50 packets, 99\% of ECG messages stay on time; with 200, none do, although 99.95--99.99\% of them still arrive within the 1.1\,s survival budget. Thus, the DoS result is a buffer-sizing effect: the gateway queue must drain within the deadline minus the path delay, or patient traffic must bypass it through priority queuing.
+
+\subsubsection{Coverage gaps.} The elevation mask changes the gaps strongly. At 240 satellites, lowering the mask from 25$^\circ$ to 15$^\circ$ closes every gap, whereas raising it to 35$^\circ$ halves the coverage. Across the six shell--mask pairs, Eq.~\eqref{eq:pmiss} matches the simulated alarm misses with a correlation of 0.995 and a mean absolute error of 2.1 percentage points. Hence, the model remains valid when the gap statistics change, and the conclusion that gaps set the alarm-miss floor holds across these coverage assumptions.

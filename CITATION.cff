@@ -1,0 +1,41 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite the paper and this repository."
+title: "Simulation code and data for: Toward Clinical Resilience of Remote Patient Monitoring over UAV-Assisted LEO Backhaul under Coverage Gaps, Jamming and Denial of Service"
+version: 1.0.0
+date-released: 2026-11-21
+license: GPL-2.0-only
+repository-code: "https://github.com/MIYM5/sagin-iomt-resilience"
+keywords: [IoMT, remote patient monitoring, non-terrestrial networks, LEO, UAV, 5G NR, resilience, jamming, denial of service, ns-3, 5G-LENA]
+authors:
+  - family-names: Younas
+    given-names: Muhammad Irfan
+    orcid: "https://orcid.org/0000-0003-3743-4710"
+    affiliation: "Institute of Space Science and Technology, University of Karachi; Sukkur IBA University, Pakistan"
+    email: irfan.younas@iba-suk.edu.pk
+  - family-names: Iqbal
+    given-names: Muhammad Jawed
+    affiliation: "Institute of Space Science and Technology, University of Karachi, Pakistan"
+  - family-names: Sodhro
+    given-names: Ali Hassan
+    affiliation: "University West, Trollhättan; Kristianstad University, Sweden"
+  - family-names: Iqbal
+    given-names: Muhammad
+    affiliation: "National Chung-Cheng University, Taiwan"
+  - family-names: Pan
+    given-names: Jen-Yi
+    affiliation: "National Chung-Cheng University, Taiwan"
+preferred-citation:
+  type: conference-paper
+  title: "Toward Clinical Resilience of Remote Patient Monitoring over UAV-Assisted LEO Backhaul under Coverage Gaps, Jamming and Denial of Service"
+  authors:
+    - {family-names: Younas, given-names: Muhammad Irfan, orcid: "https://orcid.org/0000-0003-3743-4710"}
+    - {family-names: Iqbal, given-names: Muhammad Jawed}
+    - {family-names: Sodhro, given-names: Ali Hassan}
+    - {family-names: Iqbal, given-names: Muhammad}
+    - {family-names: Pan, given-names: Jen-Yi}
+  collection-title: "Secure and Resilient Digital Transformation of Healthcare (SUNRISE 2026)"
+  collection-type: proceedings
+  publisher: {name: Springer}
+  conference: {name: "SUNRISE 2026 Workshop, NIKT 2026"}
+  year: 2026
+  notes: "Communications in Computer and Information Science, in press"
