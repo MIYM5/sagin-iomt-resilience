@@ -13,11 +13,10 @@
  *            [Attacker] --> [Gateway]   (DoS flood, scenario S3)
  *            [Jammer near the hub]       (interferes with hub->UAV link, scenario S2)
  *
- * Radio hops are modelled with a system-level link abstraction:
- *   - Hub->UAV path loss: 3GPP TR 38.901 RMa LoS (Table 7.4.1-1), UAV as aerial BS
+ * Radio hops:
+ *   - Hub->UAV: full 5G-LENA NR uplink (3GPP channel model, NR PHY/MAC/RLC UM), UAV as aerial gNB
  *   - UAV->LEO path loss: ns-3 ThreeGppNTNRuralPropagationLossModel (3GPP TR 38.811)
- *   - Rate: attenuated Shannon bound, 3GPP TR 36.942 Annex A.1
- *   - Link adaptation targets 10% BLER per transmission, up to 4 transmissions (HARQ/ARQ)
+ *   - UAV->LEO rate: attenuated Shannon bound, 3GPP TR 36.942 Annex A.1, 10% BLER target, up to 4 transmissions
  * Satellite orbits: ns-3 LeoCircularOrbitMobilityModel (Walker-delta shell).
  * Gateway backhaul, DoS flood and queueing: native ns-3 IP stack, point-to-point, DropTail.
  */

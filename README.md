@@ -26,12 +26,13 @@ scripts/run_main.sh                  main campaign            -> data/main_iga, 
 scripts/run_terminal.sh              UAV-terminal bracket     -> data/terminal_hga, terminal_handheld
 scripts/run_sensitivity.sh           sensitivity + ablation   -> data/cr_jam, cr_dos, cr_mask, cr_abl, cr_nrjam
 scripts/analyze_all.sh               metrics, tables and figures -> out/
+docs/CODE.md                         how the simulators and the analysis work
 analysis/                            Python analysis (metrics, energy models, analytical model, figures)
 results/summaries/<campaign>/        per-run summaries, metrics.csv and ECG curves for every campaign
 results/tables/                      LaTeX tables as they appear in the paper
 ```
 
-All runs skip outputs that already exist, so an interrupted campaign can simply be restarted.
+All runs skip outputs that already exist, so an interrupted campaign can simply be restarted. A walkthrough of the simulators and the analysis pipeline is in [`docs/CODE.md`](docs/CODE.md).
 
 ## Requirements
 
