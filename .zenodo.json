@@ -38,10 +38,9 @@
     "ns-3",
     "5G-LENA"
   ],
-  "license": "GPL-2.0-only",
+  "license": "gpl-2.0-only",
   "access_right": "open",
   "version": "1.0.0",
-  "language": "eng",
   "related_identifiers": [
     {
       "identifier": "10.5281/zenodo.21770621",
