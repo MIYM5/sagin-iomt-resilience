@@ -27,12 +27,13 @@ scripts/run_terminal.sh              UAV-terminal bracket     -> data/terminal_h
 scripts/run_sensitivity.sh           sensitivity + ablation   -> data/cr_jam, cr_dos, cr_mask, cr_abl, cr_nrjam
 scripts/analyze_all.sh               metrics, tables and figures -> out/
 docs/CODE.md                         how the simulators and the analysis work
+docs/tutorial/                       beginner's tutorial on the paper (PDF + LaTeX source)
 analysis/                            Python analysis (metrics, energy models, analytical model, figures)
 results/summaries/<campaign>/        per-run summaries, metrics.csv and ECG curves for every campaign
 results/tables/                      LaTeX tables as they appear in the paper
 ```
 
-All runs skip outputs that already exist, so an interrupted campaign can simply be restarted. A walkthrough of the simulators and the analysis pipeline is in [`docs/CODE.md`](docs/CODE.md).
+All runs skip outputs that already exist, so an interrupted campaign can simply be restarted. A walkthrough of the simulators and the analysis pipeline is in [`docs/CODE.md`](docs/CODE.md), and a beginner-level tutorial that explains the whole study, with every term defined, is in [`docs/tutorial/`](docs/tutorial/Tutorial_UAV-LEO-IoMT_Resilience.pdf).
 
 ## Requirements
 
